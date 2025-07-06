@@ -4,33 +4,22 @@ layout: default
 
 <div class="posts">
     {% assign posts = site.posts %}
-    {% if site.paginate %}
-        {% assign posts = paginator.posts %}
-    {% endif %}
     {% for post in posts %}
     <article class="post">
 
-      <h3 class="post-title"><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+        {% if post.wiki-url %}
+        <h3 class="post-title"><a href="{{ site.wiki-url }}{{ post.wiki-url }}">{{ post.title }}</a></h3>
+        {% elsif post.external-url %}
+        <h3 class="post-title"><a href="{{ post.external-url }}">{{ post.title }}</a></h3>
+        {% else %}
+        <h3 class="post-title"><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+        {% endif %}
 
-      <div class="post-text">
-        {{ post.excerpt }}
-      </div>
+        <div class="post-text">
+            {{ post.content }}
+        </div>
 
-      <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-      
-      <div style="width: 100%; height: 16px;"></div>
+        <div style="width: 100%; height: 16px;"></div>
     </article>
     {% endfor %}
 </div>
-
-{% if site.paginate %}
-<div class="pagination">
-    {% if paginator.previous_page %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ paginator.previous_page_path }}" title="Newer Posts" class="newer">Newer</a>
-    {% endif %}
-	
-    {% if paginator.next_page %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ paginator.next_page_path }}" title="Older Posts" class="older">Older</a>
-    {% endif %}
-</div>
-{% endif %}

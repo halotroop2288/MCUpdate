@@ -1,59 +1,69 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
+<html lang="en">
+<head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
 
-		{% include meta.html %}
+    {% include meta.html %}
 
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - {{ site.description }}"
+          href="{{ site.baseurl }}/feed.xml"/>
 
-		<link rel="stylesheet" type="text/css" href="{{ site.url }}{{ site.baseurl }}/assets/css/style.css" />
-		<link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-	</head>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #222222;
+            background-image: url('{{ site.url }}{{ site.baseurl }}/assets/images/bg_main.png');
+            color: #E0D0D0;
+        }
+        a {
+            color: #AAAAFF;
+            text-decoration: underline;
+        }
+        hr {
+            border: 0;
+            color: #111111;
+            background-color: #111111;
+            height: 2px;
+        }
+        h3 {
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+        img {
+            border: 0;
+            margin: 0;
+            width: 100%;
+        }
+    </style>
+</head>
 
-	<body>
-		<div id="main" role="main">
-			<table width="100%" height="100%">
-				<td style="padding-left: 16px; padding-right: 16px;" height="100%">
-					<div class="site-info">
-						<h1 class="site-name">{{ site.name }}</h1>
-					</div>
-					<br><br>
-					{{ content }}
-				</td>
-				<td width="180px" class="sidebar" valign="top">
-					<!-- Sidebar -->
-					<h2>Official links:</h2><a href="https://minecraft.net/">Minecraft.net</a>
-					<br><a href="https://minecraft.net/realms">Minecraft Realms</a>
-					<br><a href="https://www.facebook.com/minecraft">Minecraft on Facebook</a>
-					<br><a href="http://jinx.com/minecraft.aspx">Merchandise</a>
-					<br>
-					<br><a href="https://bugs.mojang.com/browse/MC">Bug tracker</a>
-					<br><a href="https://help.mojang.com">Account Support</a>
-					<br>
-					<br><a href="https://twitter.com/Mojang">Mojang on Twitter</a>
-					<br><a href="https://twitter.com/MojangSupport">Support on Twitter</a>
-					<br>
-					<br><b>Try our other games!</b>
-					<br>
-					<div style="height:5px; display:block;"></div>
-					<a href="http://scrolls.com/welcome?utm_source=mcl"><img border="0" src="http://assets.mojang.com/scrolls/scrolls_logo_150.png" /></a>
-					<div style="height:5px; display:block;"></div>
-					<a href="http://playcobalt.com/?utm_source=mcl"><img border="0" src="http://assets.mojang.com/cobalt/cobalt_logo_150.PNG" /></a>
-					<h2>Community links:</h2><a href="https://minecraftforum.net/">Minecraft Forums</a>
-					<br><a href="http://www.twitch.tv/directory/game/Minecraft">Minecraft on Twitch.tv</a>
-					<!-- End Sidebar -->
-				</td>
-			</table>
-		</div>
+<body>
+<div id="main" role="main">
+    <table style="width: 100%; height: 100%">
+        <tbody>
+        <tr>
+            <td style="padding-left: 16px; padding-right: 16px;" height="100%">
+                <table style="width: 100%">
+                    <td><h1>Minecraft News</h1></td>
+                    <td style="text-align: right; font-size: .8em;">
+                        <a style="color: #555555;" href="https://jekyllrb.com">Powered by Jekyll</a>
+                    </td>
+                </table>
+                {{ content }}
+            </td>
+            <td style="width: 180px; vertical-align: top;">
+                {% include sidebar.html %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-		<div class="wrapper-footer">
-			<div class="container">
-				<footer class="footer">
-				</footer>
-			</div>
-		</div>
-	</body>
+<div class="wrapper-footer">
+    <div class="container">
+        <footer class="footer">
+        </footer>
+    </div>
+</div>
+</body>
 </html>
